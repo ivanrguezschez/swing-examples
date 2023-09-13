@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!--
+    Document   : agenda.xml
+    Created on : 5 de marzo de 2007
+    Author     : IRS
+    Description:
+        Documento XML que almacena los contactos de una agenda.
+-->
+
+<!--<agenda xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="agenda.xsd">-->
+<agenda>
+    <contacto>
+        <nombre>aa</nombre>
+        <apellido1>aa</apellido1>
+        <apellido2>aa</apellido2>
+        <direccion>
+            <tipo-via>Calle</tipo-via>
+            <via>aa</via>
+            <numero>1</numero>
+            <piso>1</piso>
+            <puerta>D</puerta>
+            <portal>a</portal>
+            <escalera>a</escalera>
+            <codigo-postal>12345</codigo-postal>
+            <localidad>a</localidad>
+            <provincia>a</provincia>
+        </direccion>
+        <telefonos>
+            <telefono clase="trabajo" tipo="fijo">911234567</telefono>
+            <telefono clase="trabajo" tipo="movil">123123123</telefono>
+            <telefono clase="personal" tipo="fijo">123123123</telefono>
+            <telefono clase="personal" tipo="movil">911234567</telefono>
+        </telefonos>
+        <email></email>
+    </contacto>
+    <contacto>
+        <nombre>aaa</nombre>
+        <apellido1>aaa</apellido1>
+    </contacto>
+    <contacto>
+        <nombre>aaa</nombre>
+        <apellido1>aaa</apellido1>
+        <direccion>
+            <via>a</via>
+            <numero>1</numero>
+        </direccion>
+    </contacto>
+    <contacto>
+        <nombre>aaa</nombre>
+        <apellido1>aaa</apellido1>
+        <telefonos>
+            <telefono clase="trabajo" tipo="fijo">123123123</telefono>
+        </telefonos>
+    </contacto>    
+</agenda>

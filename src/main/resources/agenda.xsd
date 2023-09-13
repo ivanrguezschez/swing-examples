@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!--
+    Document   : agenda.xsd
+    Created on : 5 de marzo de 2007
+    Author     : IRS
+    Description:
+        XML Schema del documento XML agenda.
+-->
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+    <xsd:element name="agenda">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="contacto" maxOccurs="unbounded" />
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    
+    <xsd:element name="contacto">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="nombre" type="xsd:string"/>
+                <xsd:element name="apellido1" type="xsd:string"/>
+                <xsd:element name="apellido2" type="xsd:string" minOccurs="0"/>
+                <xsd:element ref="direccion" minOccurs="0"/>
+                <xsd:element ref="telefonos" minOccurs="0"/>
+                <xsd:element name="email" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+          
+    <xsd:element name="direccion">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="tipo-via" minOccurs="0"/>
+                <xsd:element name="via" type="xsd:string"/>
+                <xsd:element name="numero" type="xsd:positiveInteger"/>
+                <xsd:element name="piso" type="xsd:nonNegativeInteger" minOccurs="0"/> <!-- bajo=0, 1, ... -->
+                <xsd:element ref="puerta" minOccurs="0"/>
+                <xsd:element ref="portal" minOccurs="0"/>
+                <xsd:element ref="escalera" minOccurs="0"/>
+                <xsd:element ref="codigo-postal" minOccurs="0"/>
+                <xsd:element name="localidad" type="xsd:string" minOccurs="0"/>
+                <xsd:element name="provincia" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    
+    <xsd:element name="tipo-via">
+        <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+                <xsd:enumeration value="Avenida" />
+                <xsd:enumeration value="Calle" />
+                <xsd:enumeration value="Paseo" />
+                <xsd:enumeration value="Plaza" />
+            </xsd:restriction>
+        </xsd:simpleType>
+    </xsd:element>
+    
+    <xsd:element name="puerta">
+        <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+                <xsd:pattern value="[a-zA-Z1-9]{1}" /> <!-- D, I, C, A, B, C, D, 1, 2, ... -->
+            </xsd:restriction>
+        </xsd:simpleType>
+    </xsd:element> 
+	
+    <xsd:element name="portal">
+        <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+                <xsd:pattern value="[a-zA-Z1-9]{1}" /> <!-- D, I, C, A, B, C, D, 1, 2, ... -->
+            </xsd:restriction>
+        </xsd:simpleType>
+    </xsd:element> 
+	
+    <xsd:element name="escalera">
+        <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+                <xsd:pattern value="[a-zA-Z1-9]{1}" /> <!-- D, I, C, A, B, C, D, 1, 2, ... -->
+            </xsd:restriction>
+        </xsd:simpleType>
+    </xsd:element> 
+    
+    <xsd:element name="codigo-postal">
+        <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+                <xsd:pattern value="[0-9]{5}" /> 
+            </xsd:restriction>
+        </xsd:simpleType>
+    </xsd:element> 
+    
+    <xsd:element name="telefonos">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="telefono" maxOccurs="unbounded" />
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    
+    <xsd:element name="telefono">
+        <xsd:complexType>
+            <xsd:simpleContent>
+                <xsd:extension base="telefonoType">
+                    <xsd:attribute name="clase" use="required">
+                        <xsd:simpleType>
+                            <xsd:restriction base="xsd:string">
+                                <xsd:pattern value="trabajo|personal"/>
+                            </xsd:restriction>
+                        </xsd:simpleType>
+                    </xsd:attribute>
+                    <xsd:attribute name="tipo" use="required">
+                        <xsd:simpleType>
+                            <xsd:restriction base="xsd:string">
+                                <xsd:pattern value="fijo|movil"/>
+                            </xsd:restriction>
+                        </xsd:simpleType>
+                    </xsd:attribute>
+                </xsd:extension>
+            </xsd:simpleContent>
+        </xsd:complexType>
+    </xsd:element>
+    
+    <xsd:simpleType name="telefonoType">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="[0-9]{9,12}" /> 
+        </xsd:restriction>
+    </xsd:simpleType>
+</xsd:schema>
